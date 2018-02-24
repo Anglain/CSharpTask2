@@ -7,6 +7,57 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+            <RowDefinition MinHeight="20"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Enter name:" TextAlignment="Right"></TextBlock>
+        <local:LabelView Grid.Row="1" Grid.Column="1" PropertyName="Name" PropertyValue="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></local:LabelView>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Enter surname:" TextAlignment="Right"></TextBlock>
+        <local:LabelView Grid.Row="2" Grid.Column="1" PropertyName="Surname" PropertyValue="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></local:LabelView>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Enter email:" TextAlignment="Right"></TextBlock>
+        <local:LabelView Grid.Row="3" Grid.Column="1" PropertyName="Email" PropertyValue="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></local:LabelView>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Choose birth date:" TextAlignment="Right"></TextBlock>
+        <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding BirthDateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+
+        <Button Grid.Row="5" Grid.Column="1" Content="Proceed" Name="ProceedButton" Command="{Binding ProceedCommand}"></Button>
         
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="Your name: " TextAlignment="Right"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="Your surname: " TextAlignment="Right"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="3" Text="Your email: " TextAlignment="Right"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="3" Text="Your birth date: " TextAlignment="Right"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="3" Text="Are you an adult: " TextAlignment="Right"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="3" Text="Your sun sign: " TextAlignment="Right"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="3" Text="Your chinese sign: " TextAlignment="Right"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="3" Text="Is today your birthday: " TextAlignment="Right"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="4" TextAlignment="Left" Name="NameText"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="4" TextAlignment="Left" Name="SurnameText"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="4" TextAlignment="Left" Name="EmailText"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="4" TextAlignment="Left" Name="BirthDateText"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="4" TextAlignment="Left" Name="IsAdultText"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="4" TextAlignment="Left" Name="SunSignText"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="4" TextAlignment="Left" Name="ChineseSignText"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="4" TextAlignment="Left" Name="IsBirthdayText"></TextBlock>
+
     </Grid>
 </Window>
