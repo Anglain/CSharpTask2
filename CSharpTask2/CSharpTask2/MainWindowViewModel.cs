@@ -1,45 +1,25 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Net.Mime;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace CSharpTask2
 {
-    class MainWindowViewModel : INotifyPropertyChanged
+    internal class MainWindowViewModel : INotifyPropertyChanged
     {
         private Person _person;
 
         private string _name;
         private string _surname;
         private string _email;
-        private DateTime _birthDateTime;
+        private DateTime _birthDateTime = DateTime.Today;
 
         private RelayCommand _proceedCommand;
-
-        private TextBlock _nameBlock;
-        private TextBlock _surnameBlock;
-        private TextBlock _emailBlock;
-        private TextBlock _birthDateBlock;
-        private TextBlock _isAdultBlock;
-        private TextBlock _sunSignBlock;
-        private TextBlock _chineseSignBlock;
-        private TextBlock _isBirthdayBlock;
-
-        internal MainWindowViewModel(TextBlock nameBlock, TextBlock surnameBlock, TextBlock emailBlock, TextBlock birthDateBlock,
-            TextBlock isAdultBlock, TextBlock sunSignBlock, TextBlock chineseSignBlock, TextBlock isBirthdayBlock)
+        
+        internal MainWindowViewModel()
         {
-            _nameBlock = nameBlock;
-            _surnameBlock = surnameBlock;
-            _emailBlock = emailBlock;
-            _birthDateBlock = birthDateBlock;
-            _isAdultBlock = isAdultBlock;
-            _sunSignBlock = sunSignBlock;
-            _chineseSignBlock = chineseSignBlock;
-            _isBirthdayBlock = isBirthdayBlock;
         }
 
         public RelayCommand ProceedCommand
@@ -54,34 +34,29 @@ namespace CSharpTask2
             }
         }
 
-        private async void ProceedImplementation(object o)
+        public string BirthDateText
         {
-            await Task.Run(() =>
-            {
-                if (DateTime.Now.Year - _birthDateTime.Year >= 135 || DateTime.Now.Year - _birthDateTime.Year < 0)
-                {
-                    MessageBox.Show("Input correct birth day!", "ERROR");
-                    _birthDateTime = DateTime.MinValue;
-                }
+            get { return _birthDateTime.ToShortDateString(); }
+        }
 
-                _person = new Person(Name, Surname, Email, BirthDateTime);
+        public string IsAdult
+        {
+            get { return _person == null ? "" : _person.IsAdult ? "Yes!" : "No"; }
+        }
 
-                if (_person.IsBirthday)
-                {
-                    MessageBox.Show("Happy birthday!", "Birthday greetings!");
-                }
+        public string SunSign
+        {
+            get { return _person?.SunSign; }
+        }
 
-                Thread.Sleep(200);
-            });
+        public string ChineseSign
+        {
+            get { return _person?.ChineseSign; }
+        }
 
-            _nameBlock.Text = _name;
-            _surnameBlock.Text = _surname;
-            _emailBlock.Text = _email;
-            _birthDateBlock.Text = _birthDateTime.ToShortDateString();
-            _isAdultBlock.Text = (_person.IsAdult) ? "Yes!" : "No";
-            _sunSignBlock.Text = _person.SunSign;
-            _chineseSignBlock.Text = _person.ChineseSign;
-            _isBirthdayBlock.Text = (_person.IsBirthday) ? "Yes!" : "No";
+        public string IsBirthday
+        {
+            get { return _person == null ? "" : _person.IsBirthday ? "Yes!" : "No"; }
         }
 
         public string Name
@@ -122,6 +97,32 @@ namespace CSharpTask2
                 _birthDateTime = value;
                 OnPropertyChanged();
             }
+        }
+
+        private async void ProceedImplementation(object o)
+        {
+            await Task.Run(() =>
+            {
+                if (DateTime.Now.Year - _birthDateTime.Year >= 135 || DateTime.Now.Year - _birthDateTime.Year < 0)
+                {
+                    MessageBox.Show("Input correct birth day!", "ERROR");
+                    _birthDateTime = DateTime.MinValue;
+                }
+
+                _person = new Person(Name, Surname, Email, BirthDateTime);
+
+                if (_person.IsBirthday)
+                {
+                    MessageBox.Show("Happy birthday!", "Birthday greetings!");
+                }
+
+                Thread.Sleep(200);
+            });
+            OnPropertyChanged(nameof(BirthDateText));
+            OnPropertyChanged(nameof(IsAdult));
+            OnPropertyChanged(nameof(SunSign));
+            OnPropertyChanged(nameof(ChineseSign));
+            OnPropertyChanged(nameof(IsBirthday));
         }
 
         #region Implementation

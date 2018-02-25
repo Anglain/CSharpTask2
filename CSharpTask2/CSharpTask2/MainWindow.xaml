@@ -31,7 +31,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Enter name:" TextAlignment="Right"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Enter name:" TextAlignment="Right" Margin="0,8,0.333,14.333" Grid.RowSpan="2"></TextBlock>
         <local:LabelView Grid.Row="1" Grid.Column="1" PropertyName="Name" PropertyValue="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></local:LabelView>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Enter surname:" TextAlignment="Right"></TextBlock>
         <local:LabelView Grid.Row="2" Grid.Column="1" PropertyName="Surname" PropertyValue="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></local:LabelView>
@@ -50,14 +50,13 @@
         <TextBlock Grid.Row="6" Grid.Column="3" Text="Your sun sign: " TextAlignment="Right"></TextBlock>
         <TextBlock Grid.Row="7" Grid.Column="3" Text="Your chinese sign: " TextAlignment="Right"></TextBlock>
         <TextBlock Grid.Row="8" Grid.Column="3" Text="Is today your birthday: " TextAlignment="Right"></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="4" TextAlignment="Left" Name="NameText"></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="4" TextAlignment="Left" Name="SurnameText"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="4" TextAlignment="Left" Name="EmailText"></TextBlock>
-        <TextBlock Grid.Row="4" Grid.Column="4" TextAlignment="Left" Name="BirthDateText"></TextBlock>
-        <TextBlock Grid.Row="5" Grid.Column="4" TextAlignment="Left" Name="IsAdultText"></TextBlock>
-        <TextBlock Grid.Row="6" Grid.Column="4" TextAlignment="Left" Name="SunSignText"></TextBlock>
-        <TextBlock Grid.Row="7" Grid.Column="4" TextAlignment="Left" Name="ChineseSignText"></TextBlock>
-        <TextBlock Grid.Row="8" Grid.Column="4" TextAlignment="Left" Name="IsBirthdayText"></TextBlock>
-
+        <TextBlock Grid.Row="1" Grid.Column="4" TextAlignment="Left" Text="{Binding Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="4" TextAlignment="Left" Text="{Binding Surname, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="4" TextAlignment="Left" Text="{Binding Email, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="4" TextAlignment="Left" Text="{Binding BirthDateText, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="4" TextAlignment="Left" Text="{Binding IsAdult, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="4" TextAlignment="Left" Text="{Binding SunSign, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="4" TextAlignment="Left" Text="{Binding ChineseSign, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="4" TextAlignment="Left" Text="{Binding IsBirthday, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
     </Grid>
 </Window>

@@ -11,7 +11,7 @@ namespace CSharpTask2
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel(NameText, SurnameText, EmailText, BirthDateText, IsAdultText, SunSignText, ChineseSignText, IsBirthdayText);
+            DataContext = new MainWindowViewModel();
         }
     }
 }

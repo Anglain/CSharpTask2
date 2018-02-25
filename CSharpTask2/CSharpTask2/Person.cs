@@ -2,7 +2,7 @@
 
 namespace CSharpTask2
 {
-    enum ChineseZodiac
+    internal enum ChineseZodiac
     {
         Rat = 1996,
         Ox = 1997,
@@ -20,10 +20,10 @@ namespace CSharpTask2
 
     internal class Person
     {
-        private string _name;
-        private string _surname;
-        private string _email;
-        private DateTime _birthDateTime;
+        private readonly string _name;
+        private readonly string _surname;
+        private readonly string _email;
+        private readonly DateTime _birthDateTime;
 
         internal Person(string name, string surname, string email, DateTime birthDateTime)
         {
@@ -50,39 +50,30 @@ namespace CSharpTask2
         internal string Name
         {
             get { return _name; }
-            set { _name = value; }
         }
 
         internal string Surname
         {
             get { return _surname; }
-            set { _surname = value; }
         }
 
         internal string Email
         {
             get { return _email; }
-            set { _email = value; }
         }
 
         internal DateTime BirthDateTime
         {
             get { return _birthDateTime; }
-            set { _birthDateTime = value; }
         }
 
         internal bool IsAdult
         {
             get
             {
-                if (DateTime.Now.Year - BirthDateTime.Year > 18 || 
-                    (DateTime.Now.Year - BirthDateTime.Year == 18 && DateTime.Now.Month > BirthDateTime.Month) ||
-                    (DateTime.Now.Year - BirthDateTime.Year == 18 && DateTime.Now.Month == BirthDateTime.Month && DateTime.Now.Day >= BirthDateTime.Day))
-                {
-                    return true;
-                }
-
-                return false;
+                return DateTime.Now.Year - BirthDateTime.Year > 18 || 
+                       DateTime.Now.Year - BirthDateTime.Year == 18 && DateTime.Now.Month > BirthDateTime.Month ||
+                       DateTime.Now.Year - BirthDateTime.Year == 18 && DateTime.Now.Month == BirthDateTime.Month && DateTime.Now.Day >= BirthDateTime.Day;
             }
         }
 
@@ -146,55 +137,53 @@ namespace CSharpTask2
 
         internal string ChineseSign
         {
-            get {
-                if ((Math.Abs((int)ChineseZodiac.Rat - BirthDateTime.Year) % 12) == 0)
+            get
+            {
+                if ((Math.Abs((int) ChineseZodiac.Rat - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Rat";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Ox - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Ox - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Ox";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Tiger - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Tiger - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Tiger";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Rabbit - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Rabbit - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Rabbit";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Dragon - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Dragon - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Dragon";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Snake - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Snake - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Snake";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Horse - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Horse - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Horse";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Goat - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Goat - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Goat";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Monkey - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Monkey - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Monkey";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Rooster - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Rooster - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Rooster";
                 }
-                else if ((Math.Abs((int)ChineseZodiac.Dog - BirthDateTime.Year) % 12) == 0)
+                if ((Math.Abs((int) ChineseZodiac.Dog - BirthDateTime.Year) % 12) == 0)
                 {
                     return "Dog";
                 }
-                else
-                {
-                    return "Pig";
-                }
+                return "Pig";
             }
         }
 
@@ -202,11 +191,7 @@ namespace CSharpTask2
         {
             get
             {
-                if (DateTime.Now.Month == BirthDateTime.Month && DateTime.Now.Day == BirthDateTime.Day)
-                {
-                    return true;
-                }
-                return false;
+                return DateTime.Now.Month == BirthDateTime.Month && DateTime.Now.Day == BirthDateTime.Day;
             }
         }
 
